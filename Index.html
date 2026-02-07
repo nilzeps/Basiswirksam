@@ -1,0 +1,1526 @@
+```html
+<!doctype html>
+<html lang="de" data-theme="basis" data-layout="split">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Basiswirksam | Energiemanagement & Mentaltraining (online)</title>
+  <meta name="description" content="Ruhiger Kopf. Klarer Fokus. Mehr Energie. 1:1 Coaching: Zustandsmanagement, Mentaltraining & Energiemanagement für Klarheit, Präsenz und souveräne Entscheidungen unter Druck." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Basiswirksam – Ruhiger Kopf. Klarer Fokus. Mehr Energie." />
+  <meta property="og:description" content="Ganzheitlich, pragmatisch, wirksam: Fokus steuern, Anspannung regulieren, Energie verlässlich managen." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* =========================================================
+       BASISWIRKSAM – Option 1: Navy + Teal auf Light-Slate (Business)
+       Text/Content unverändert – nur Farbsystem/Materialität verfeinert
+       ========================================================= */
+
+    :root{
+      /* Neutrals – ruhiger, business-tauglicher Hintergrund */
+      --bg: #eef3f8;                       /* light slate */
+      --paper: rgba(255,255,255,.88);      /* mehr „Material“, weniger milchig */
+      --paper2: rgba(255,255,255,.74);
+
+      --text: #0b1220;                     /* deep navy-ish */
+      --muted: rgba(11,18,32,.62);
+      --line: rgba(11,18,32,.10);
+      --shadow: 0 18px 44px rgba(11,18,32,.10);
+
+      /* Accents – Primary dominant, Secondary sparsam */
+      --accent: #1e3a8a;                   /* Navy */
+      --accent2:#0ea5a4;                   /* Teal */
+
+      --max: 1180px;
+      --gutter: 22px;
+
+      --radius: 18px;
+      --radius2: 26px;
+
+      --sectionPad: 92px;
+      --prose: 74ch;
+
+      /* type scale */
+      --h1: 64px;
+      --h2: 34px;
+      --h3: 18px;
+      --lead: 18px;
+      --body: 16px;
+
+      --ring: rgba(30,58,138,.22);
+
+      /* typography */
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+
+      /* spacing */
+      --blockPad: 30px;
+    }
+
+    /* (Optional) Behalte deine alternativen Themes – unverändert */
+    html[data-theme="magenta"]{
+      --bg:#07080f;
+      --paper: rgba(15,17,28,.80);
+      --paper2: rgba(15,17,28,.62);
+      --text:#eaf0f7;
+      --muted:#a8b3c2;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 18px 44px rgba(0,0,0,.38);
+      --accent:#ff4fd8;
+      --accent2:#b34dff;
+      --ring: rgba(255,79,216,.26);
+    }
+    html[data-theme="bw"]{
+      --bg:#070a0d;
+      --paper: rgba(13,17,22,.84);
+      --paper2: rgba(13,17,22,.62);
+      --text:#eaf0f7;
+      --muted:#b6c0cc;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 18px 44px rgba(0,0,0,.38);
+      --accent:#ffffff;
+      --accent2:#cfd6df;
+      --ring: rgba(255,255,255,.20);
+    }
+    html[data-theme="orange"]{
+      --bg:#07090c;
+      --paper: rgba(16,19,26,.82);
+      --paper2: rgba(16,19,26,.62);
+      --text:#eaf0f7;
+      --muted:#a8b3c2;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 18px 44px rgba(0,0,0,.38);
+      --accent:#ff8a2a;
+      --accent2:#ffcc66;
+      --ring: rgba(255,138,42,.22);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      color:var(--text);
+      font: 400 var(--body)/1.7 var(--sans);
+      letter-spacing: .1px;
+
+      /* Subtileres, business-typisches Lichtspiel */
+      background:
+        radial-gradient(1100px 540px at 12% 0%, rgba(30,58,138,.08), transparent 60%),
+        radial-gradient(980px 560px at 88% 10%, rgba(14,165,164,.06), transparent 60%),
+        radial-gradient(900px 900px at 50% 100%, rgba(255,255,255,.28), transparent 62%),
+        var(--bg);
+
+      overflow-x:hidden;
+    }
+    @supports (background: color-mix(in srgb, red 50%, transparent)) {
+      body{
+        background:
+          radial-gradient(1100px 540px at 12% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
+          radial-gradient(980px 560px at 88% 10%, color-mix(in srgb, var(--accent2) 8%, transparent), transparent 60%),
+          radial-gradient(900px 900px at 50% 100%, rgba(255,255,255,.28), transparent 62%),
+          var(--bg);
+      }
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--gutter)}
+    button, input, textarea{font: inherit;}
+
+    :focus-visible{
+      outline: 3px solid var(--ring);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    /* =========================================================
+       Topbar
+       ========================================================= */
+    .topbar{
+      position: sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      /* weniger „glasig“, mehr premium */
+      background: rgba(255,255,255,.78);
+      border-bottom: 1px solid var(--line);
+    }
+    html[data-theme="magenta"] .topbar,
+    html[data-theme="bw"] .topbar,
+    html[data-theme="orange"] .topbar{
+      background: rgba(7,8,15,.55);
+    }
+
+    .topbar .inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 180px;
+    }
+    .logo-img{
+      width:44px;
+      height:44px;
+      border-radius: 14px;
+      object-fit:contain;
+      display:block;
+      background: transparent;
+      box-shadow: 0 14px 32px rgba(11,18,32,.12);
+    }
+    .brand .name{
+      font-weight: 900;
+      letter-spacing: .2px;
+      text-transform: none;
+      font-size: 16px;
+      line-height: 1.15;
+    }
+    .brand .tag{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      letter-spacing:.2px;
+    }
+
+    .nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size: 13px;
+      letter-spacing: .16px;
+      color: var(--muted);
+      padding: 10px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      white-space: nowrap;
+    }
+    .nav a:hover{
+      transform: translateY(-1px);
+      color: var(--text);
+      background: rgba(255,255,255,.42);
+      border-color: rgba(11,18,32,.10);
+    }
+    html[data-theme="magenta"] .nav a:hover,
+    html[data-theme="bw"] .nav a:hover,
+    html[data-theme="orange"] .nav a:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    .topcta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 11px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      border: 1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.50);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+      white-space: nowrap;
+    }
+    .topcta:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 14px 34px rgba(11,18,32,.12);
+    }
+    html[data-theme="magenta"] .topcta,
+    html[data-theme="bw"] .topcta,
+    html[data-theme="orange"] .topcta{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Mobile menu button */
+    .menuBtn{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.50);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .menuBtn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 14px 34px rgba(11,18,32,.12);
+    }
+    html[data-theme="magenta"] .menuBtn,
+    html[data-theme="bw"] .menuBtn,
+    html[data-theme="orange"] .menuBtn{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+    }
+
+    .icon{width:18px; height:18px; position:relative; display:block; margin:auto;}
+    .icon::before, .icon::after, .icon span{
+      content:"";
+      position:absolute; left:0; right:0;
+      height:2px; border-radius:999px;
+      background: currentColor;
+    }
+    .icon::before{top:3px;}
+    .icon span{top:8px;}
+    .icon::after{top:13px;}
+
+    /* Drawer */
+    [hidden]{display:none !important;}
+    .drawerBackdrop{
+      position:fixed; inset:0;
+      background: rgba(11,18,32,.28);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 80;
+    }
+    .drawer{
+      position:fixed;
+      top:0; right:0;
+      height:100%;
+      width:min(420px, 92vw);
+      background: rgba(255,255,255,.94);
+      border-left: 1px solid var(--line);
+      box-shadow: -18px 0 40px rgba(11,18,32,.18);
+      transform: translateX(100%);
+      transition: transform .18s ease;
+      z-index: 90;
+      padding: 18px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    html[data-theme="magenta"] .drawer,
+    html[data-theme="bw"] .drawer,
+    html[data-theme="orange"] .drawer{
+      background: rgba(15,17,28,.92);
+      border-left-color: rgba(255,255,255,.10);
+    }
+    .drawer.open{transform: translateX(0);}
+    .drawerHeader{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    html[data-theme="magenta"] .drawerHeader,
+    html[data-theme="bw"] .drawerHeader,
+    html[data-theme="orange"] .drawerHeader{
+      border-bottom-color: rgba(255,255,255,.10);
+    }
+    .drawerTitle{font-weight:900; letter-spacing:.2px;}
+    .closeBtn{
+      width:44px; height:44px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.50);
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+    }
+    .closeBtn:hover{transform: translateY(-1px); background: rgba(255,255,255,.62); box-shadow: 0 14px 34px rgba(11,18,32,.12);}
+    html[data-theme="magenta"] .closeBtn,
+    html[data-theme="bw"] .closeBtn,
+    html[data-theme="orange"] .closeBtn{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+
+    .drawerNav{display:grid; gap:10px;}
+    .drawerNav a{
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.62);
+      font-weight: 800;
+      color: var(--text);
+    }
+    .drawerNav a:hover{background: rgba(255,255,255,.74);}
+    html[data-theme="magenta"] .drawerNav a,
+    html[data-theme="bw"] .drawerNav a,
+    html[data-theme="orange"] .drawerNav a{
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    /* =========================================================
+       Sections
+       ========================================================= */
+    section{padding: var(--sectionPad) 0;}
+
+    .sectionHead{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items:end;
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .sectionMeta{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .secIndex{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 30px;
+      height: 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.52);
+      letter-spacing: .18em;
+      font-weight: 800;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    html[data-theme="magenta"] .secIndex,
+    html[data-theme="bw"] .secIndex,
+    html[data-theme="orange"] .secIndex{
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    .sectionTitle{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      font-size: 22px;
+      line-height: 1.15;
+      margin:0;
+    }
+
+    .sectionHint{
+      text-align:right;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-bottom: 2px;
+    }
+
+    .sectionGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .sectionHead{grid-template-columns: 1fr; gap:10px;}
+      .sectionHint{text-align:left;}
+      .sectionGrid{grid-template-columns:1fr; gap:18px;}
+    }
+
+    .block{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: var(--blockPad);
+    }
+    .block.tight{padding: 22px;}
+    html[data-theme="magenta"] .block,
+    html[data-theme="bw"] .block,
+    html[data-theme="orange"] .block{
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 720px){
+      :root{ --sectionPad: 72px; --blockPad: 22px; --h1: 44px; --h2: 28px; --lead: 16px; }
+      .wrap{padding: 0 16px;}
+    }
+
+    /* Typography */
+    h1{
+      font-family: var(--serif);
+      font-size: var(--h1);
+      line-height: 0.98;
+      margin: 10px 0 12px;
+      letter-spacing: -0.03em;
+      font-weight: 900;
+    }
+    h2{
+      font-family: var(--serif);
+      font-size: var(--h2);
+      line-height: 1.12;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+      font-weight: 900;
+    }
+    h3{
+      font-size: var(--h3);
+      margin: 0 0 10px;
+      letter-spacing: .1px;
+      font-weight: 900;
+    }
+
+    p{margin:0; color: var(--text);}
+    .muted{color: var(--muted);}
+    .lead{
+      font-size: var(--lead);
+      line-height: 1.6;
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+    .proseMax{max-width: var(--prose);}
+
+    .accentbar{
+      height:3px;
+      width: 112px;
+      border-radius: 999px;
+      margin: 16px 0 20px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: .85;
+    }
+
+    .divider{height:1px; background: var(--line); margin: 22px 0;}
+
+    /* Lists */
+    .list{display:grid; gap:12px; padding:0; margin:14px 0 0; list-style:none}
+    .li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding: 14px 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper2);
+    }
+    html[data-theme="magenta"] .li,
+    html[data-theme="bw"] .li,
+    html[data-theme="orange"] .li{
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.10);
+    }
+    .dot{
+      width:10px; height:10px;
+      border-radius: 3px;
+      margin-top: 7px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      flex: 0 0 auto;
+      opacity: .9;
+    }
+
+    /* Pills */
+    .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;}
+    .pill{
+      font-size: 12px;
+      letter-spacing: .18px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.60);
+      color: var(--text);
+      font-weight: 800;
+    }
+    html[data-theme="magenta"] .pill,
+    html[data-theme="bw"] .pill,
+    html[data-theme="orange"] .pill{
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.10);
+      color: rgba(234,240,247,.92);
+    }
+
+    /* Buttons */
+    .btns{display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 13px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.56);
+      color: var(--text);
+      font-weight: 900;
+      letter-spacing: .10px;
+      transition: transform .12s ease, background .12s ease, box-shadow .12s ease, border-color .12s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 14px 34px rgba(11,18,32,.10);
+      border-color: rgba(11,18,32,.16);
+    }
+    html[data-theme="magenta"] .btn,
+    html[data-theme="bw"] .btn,
+    html[data-theme="orange"] .btn{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+    }
+    html[data-theme="magenta"] .btn:hover,
+    html[data-theme="bw"] .btn:hover,
+    html[data-theme="orange"] .btn:hover{
+      background: rgba(255,255,255,.10);
+      box-shadow: 0 18px 44px rgba(0,0,0,.34);
+    }
+
+    /* Primary CTA – business-typisch, stabiler Kontrast */
+    .btn.primary{
+      background: var(--accent);
+      color: #ffffff;
+      border-color: rgba(30,58,138,.22);
+    }
+    .btn.primary:hover{
+      box-shadow: 0 18px 44px rgba(30,58,138,.18);
+      transform: translateY(-1px);
+    }
+    html[data-theme="magenta"] .btn.primary,
+    html[data-theme="bw"] .btn.primary,
+    html[data-theme="orange"] .btn.primary{
+      color: rgba(255,255,255,.96);
+    }
+
+    /* Contact form */
+    .formcard{
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.62);
+    }
+    html[data-theme="magenta"] .formcard,
+    html[data-theme="bw"] .formcard,
+    html[data-theme="orange"] .formcard{
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.10);
+    }
+    form{margin:0}
+    .formgrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    @media (max-width: 640px){ .formgrid{grid-template-columns:1fr} }
+    .field{display:flex; flex-direction:column; gap:6px}
+    .label{
+      font-size:12px;
+      color:var(--text);
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .input, .textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.92);
+      color: var(--text);
+      outline: none;
+      transition: box-shadow .12s ease, border-color .12s ease, background .12s ease;
+    }
+    html[data-theme="magenta"] .input,
+    html[data-theme="bw"] .input,
+    html[data-theme="orange"] .input,
+    html[data-theme="magenta"] .textarea,
+    html[data-theme="bw"] .textarea,
+    html[data-theme="orange"] .textarea{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+    .textarea{min-height: 140px; resize: vertical;}
+    .input::placeholder, .textarea::placeholder{color: rgba(11,18,32,.45)}
+    html[data-theme="magenta"] .input::placeholder,
+    html[data-theme="bw"] .input::placeholder,
+    html[data-theme="orange"] .input::placeholder,
+    html[data-theme="magenta"] .textarea::placeholder,
+    html[data-theme="bw"] .textarea::placeholder,
+    html[data-theme="orange"] .textarea::placeholder{
+      color: rgba(168,179,194,.80);
+    }
+    .input:focus, .textarea:focus{
+      border-color: rgba(30,58,138,.40);
+      box-shadow: 0 0 0 4px rgba(30,58,138,.16);
+      background: rgba(255,255,255,.96);
+    }
+    .help{font-size: 12px; color: var(--muted); margin-top: 8px;}
+    .checkrow{display:flex; gap:10px; align-items:flex-start; margin-top: 10px;}
+    .checkrow input{margin-top:3px;}
+    .sr-only{
+      position:absolute !important;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
+    }
+
+    footer{
+      padding: 44px 0 58px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+    footer .row{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    footer a{color: var(--muted);}
+    footer a:hover{color: var(--text);}
+
+    /* Responsive topbar */
+    @media (max-width: 980px){
+      .nav{display:none;}
+      .topcta{display:none;}
+      .menuBtn{display:inline-flex;}
+      .brand .tag{display:none;}
+    }
+
+    /* Mobile buttons stack */
+    @media (max-width: 380px){
+      .btns{display:grid;}
+      .btn{width:100%;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto !important;}
+      *{transition:none !important;}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <a class="brand" href="#top" aria-label="Zur Startseite">
+          <img
+            class="logo-img"
+            src="assets/basiswirksam-logo.png"
+            alt="Basiswirksam Logo"
+            width="44"
+            height="44"
+            loading="eager"
+            decoding="async"
+          />
+          <div>
+            <div class="name">Basiswirksam</div>
+            <span class="tag">Ruhiger Kopf. Klarer Fokus. Mehr Energie.</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Hauptnavigation">
+          <a href="#top" data-nav="top">Start</a>
+          <a href="#symptome" data-nav="symptome">Wenn dein Kopf nicht ruht</a>
+          <a href="#kern" data-nav="kern">Kern</a>
+          <a href="#druck" data-nav="druck">Druck & Klarheit</a>
+          <a href="#coaching" data-nav="coaching">Coaching</a>
+          <a href="#ueber-mich" data-nav="ueber-mich">Über mich</a>
+          <a href="#haltung" data-nav="haltung">Meine Haltung</a>
+          <a href="#veraenderung" data-nav="veraenderung">Veränderung</a>
+          <a href="#faq" data-nav="faq">FAQ</a>
+          <a href="#kontakt" data-nav="kontakt">Kontakt</a>
+        </nav>
+
+        <a class="topcta" href="#kontakt">Erstgespräch anfragen</a>
+
+        <button class="menuBtn" id="menuBtn" type="button"
+          aria-label="Menü öffnen" aria-controls="mobileDrawer" aria-expanded="false">
+          <span class="icon" aria-hidden="true"><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="drawerBackdrop" id="drawerBackdrop" hidden></div>
+
+  <aside class="drawer" id="mobileDrawer" role="dialog" aria-modal="true"
+    aria-label="Mobile Navigation" aria-hidden="true" tabindex="-1">
+    <div class="drawerHeader">
+      <div class="drawerTitle">Menü</div>
+      <button class="closeBtn" id="closeBtn" type="button" aria-label="Menü schließen">✕</button>
+    </div>
+
+    <nav class="drawerNav" aria-label="Mobile Hauptnavigation">
+      <a href="#top" data-close data-nav="top">Start</a>
+      <a href="#symptome" data-close data-nav="symptome">Wenn dein Kopf nicht ruht</a>
+      <a href="#kern" data-close data-nav="kern">Kern</a>
+      <a href="#druck" data-close data-nav="druck">Druck & Klarheit</a>
+      <a href="#coaching" data-close data-nav="coaching">Coaching</a>
+      <a href="#ueber-mich" data-close data-nav="ueber-mich">Über mich</a>
+      <a href="#haltung" data-close data-nav="haltung">Meine Haltung</a>
+      <a href="#veraenderung" data-close data-nav="veraenderung">Veränderung</a>
+      <a href="#faq" data-close data-nav="faq">FAQ</a>
+      <a href="#kontakt" data-close data-nav="kontakt">Kontakt</a>
+    </nav>
+
+    <div style="margin-top:auto;">
+      <a class="btn primary" href="#kontakt" data-close>Erstgespräch anfragen</a>
+    </div>
+  </aside>
+
+  <main id="top">
+    <!-- HERO -->
+    <section id="hero">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">01</span>
+              <span>1:1 Coaching · Online · Präsenz </span>
+            </div>
+          </div>
+          <div class="sectionHint">Ruhiger Kopf · Klarer Fokus · Mehr Energie</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h1>Basiswirksam</h1>
+            <p class="lead"><strong>Ruhiger Kopf. Klarer Fokus. Mehr Energie.</strong></p>
+            <div class="accentbar" aria-hidden="true"></div>
+
+            <div class="proseMax">
+              <p>
+                Basiswirksam ist ein ganzheitlicher, pragmatischer Ansatz, um <strong>unter Druck stabil</strong> zu bleiben – und gleichzeitig
+                <strong>frei, präsent und authentisch</strong> zu leben.
+              </p>
+
+              <p style="margin-top:14px;">
+                Wenn Gedanken kreisen, Ansprüche steigen und Stress zum Dauerzustand wird, hilft nicht noch mehr Optimierung.
+                Es braucht ein Fundament: <strong>Energiemanagement</strong>.
+                Du lernst, dich zu regulieren, Blockaden zu lösen, Ängste zu entkoppeln und deinen Fokus so zu steuern,
+                dass du im Alltag wieder <strong>handlungsfähig</strong> bist – klar im Kopf, stabil im Körper, sicher in dir.
+              </p>
+
+              <p style="margin-top:14px;">
+                <strong>Es geht nicht um Symptombekämpfung.</strong>
+                Es geht um echte Veränderung: <strong>raus aus Druck, Angst und Dauerstress</strong> – hin zu
+                <strong>Klarheit, Energie, Freiheit und innerer Stabilität</strong>.
+              </p>
+            </div>
+
+            <div class="btns" style="margin-top:18px;">
+              <!-- TODO: Buchungslink eintragen -->
+              <a class="btn primary" href="#" target="_blank" rel="noopener">Erstgespräch online buchen</a>
+            </div>
+          </div>
+
+          <div class="block tight" id="symptome">
+            <h3>Wenn dein Kopf nicht mehr zur Ruhe kommt</h3>
+            <p class="muted">Du kennst das vielleicht:</p>
+            <ul class="list">
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Der Tag ist vorbei, aber dein Kopf arbeitet weiter.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Du funktionierst – doch die wirklich wichtigen Momente gehen im Tempo unter.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Entscheidungen kosten übermäßig Kraft, Fokus bricht schneller weg.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Zuhause bist du körperlich anwesend, aber innerlich noch im „Arbeitsmodus“.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Du reagierst – statt bewusst zu gestalten.</span></li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <div class="proseMax">
+              <p>
+                Der Punkt ist nicht, dass du „zu wenig Disziplin“ hast.
+                Der Punkt ist: <strong>Dein System läuft zu lange auf Spannung.</strong>
+              </p>
+              <p style="margin-top:12px;" class="muted">
+                Und wenn das so ist, fühlt sich selbst Erfolg oft nicht mehr gut an.
+                Dann wirkt alles nach außen stabil – und innen wird es enger.
+              </p>
+            </div>
+
+            <div class="divider"></div>
+            <p class="muted">Der Preis ist selten nur Zeit. Es geht um Energie, Klarheit und Präsenz.</p>
+          </div>
+        </div>
+
+        <div class="pillrow">
+          <span class="pill">Mentaltraining</span>
+          <span class="pill">Energiemanagement</span>
+          <span class="pill">Regulation</span>
+          <span class="pill">Fokussteuerung</span>
+          <span class="pill">Präsenz</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KERN -->
+    <section id="kern">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">02</span>
+              <span>Der Kern</span>
+            </div>
+          </div>
+          <div class="sectionHint">Ganzheitlich · pragmatisch · wirksam</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Der Kern: Du managst Termine – aber nicht systematisch dich selbst</h2>
+
+            <div class="proseMax">
+              <p>
+                Die meisten Menschen managen Aufgaben, Termine und Verantwortung.
+                Was fast niemand systematisch lernt: <strong>Körper, Geist und inneren Zustand</strong>.
+              </p>
+
+              <p style="margin-top:14px;">
+                Dabei entscheidet genau das über die Qualität deines Lebens – und nicht nur über Leistung:
+              </p>
+
+              <ul class="list">
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Physische Energie:</strong> Energie, Schlaf, Stressphysiologie, Regulation</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Mentale Energie:</strong> Fokus, Gedankenhygiene, innere Klarheit, Wachstum</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Emotionale Energie:</strong> Grenzen, Verbindung, Rollen, Erwartungen</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Spirituelle Energie:</strong> Werte, Sinn, Authentizität, innere Richtung</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="block tight">
+            <div class="proseMax">
+              <p class="lead" style="margin-bottom:10px;">
+                <strong>Du musst nicht mehr machen. Du musst dich besser führen.</strong>
+              </p>
+
+              <p>
+                Basiswirksam bedeutet: Stabilität entsteht nicht durch „noch mehr Kontrolle“, sondern durch
+                Regulation, Klarheit und eine innere Ausrichtung, die trägt – auch wenn es eng wird.
+              </p>
+
+              <p class="muted" style="margin-top:12px;">
+                Das ist kein Idealzustand. Es ist ein trainierbares System.
+              </p>
+
+              <div class="btns" style="margin-top:16px;">
+                <a class="btn" href="#druck">Warum Klarheit verschwindet</a>
+                <a class="btn primary" href="#kontakt">Nächster Schritt</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRUCK -->
+    <section id="druck">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">03</span>
+              <span>Druck & Klarheit</span>
+            </div>
+          </div>
+          <div class="sectionHint">Weite · Verbindung · Fokus</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Warum Klarheit unter Druck verschwindet</h2>
+
+            <div class="proseMax">
+              <p>
+                Dein Nervensystem bewertet permanent, ob du sicher bist oder unter Bedrohung stehst.
+                Wenn Sicherheit da ist, entstehen <strong>Weite, Verbindung, Kreativität und klare Entscheidungen</strong>.
+              </p>
+
+              <p style="margin-top:14px;">
+                Wenn Dauerreize, Druck und innere Unordnung überwiegen, schaltet dein System in Stressmuster:
+                Denken wird enger. Geduld kürzer. Klarheit leiser. Und du funktionierst – aber bist innerlich nicht mehr wirklich da.
+              </p>
+            </div>
+          </div>
+
+          <div class="block tight">
+            <div class="proseMax">
+              <p class="lead" style="margin-bottom:10px;">
+                <strong>Die entscheidende Frage ist nicht: „Wie bekomme ich noch mehr geschafft?“</strong>
+              </p>
+
+              <p>
+                Sondern: <strong>Macht dich dieser Stress überhaupt noch glücklich? Hat er das je getan?</strong>
+              </p>
+
+              <p style="margin-top:14px;" class="muted">
+                Vielleicht funktioniert das „schöne Leben“ anders:
+                <strong>smarter, klarer, freier</strong> – mit weniger innerem Widerstand.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COACHING -->
+    <section id="coaching">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">04</span>
+              <span>Coaching</span>
+            </div>
+          </div>
+          <div class="sectionHint">Blockaden · Ängste · Potenzial</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Was du im Coaching bekommst</h2>
+
+            <div class="proseMax">
+              <p>
+                Jedes Coaching ist <strong>individuell</strong> – maßgeschneidert auf dich und dein Leben.
+                Wir arbeiten nicht gegen Symptome, sondern an Ursachen:
+                <strong>Blockaden lösen, Ängste überwinden, Potenzial entfalten</strong> – damit du stabil, frei und erfüllt wirst.
+              </p>
+
+              <p style="margin-top:14px;">
+                Wir wählen flexibel, was du brauchst. Häufig greifen die Bereiche ineinander.
+                Der Ansatz bleibt ganzheitlich: <strong>Körper, Geist, inneres Erleben, Beziehung/Umfeld, beruflicher Alltag, Struktur/Finanzen</strong>
+                und – wenn passend – <strong>Sexualität/Polarität</strong>.
+              </p>
+
+              <div class="divider"></div>
+
+              <h3>Ablauf in 3 Schritten</h3>
+              <ul class="list" style="margin-top:10px;">
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>1) Standort bestimmen:</strong> Wo stehst du wirklich – mental, körperlich, im Alltag?</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>2) System bauen:</strong> Tools, Routinen und klare Hebel, die zu deinem Leben passen.</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>3) Transfer sichern:</strong> Umsetzung, Anpassung und Stabilisierung – bis es „deins“ ist.</span></li>
+              </ul>
+
+              <p class="muted" style="margin-top:14px;">
+                Du bekommst kein starres Programm, sondern ein System, das zu deinem Alltag passt – und dort wirkt, wo es zählt.
+              </p>
+            </div>
+          </div>
+
+          <div class="block tight">
+            <h3>Du lernst, wie du:</h3>
+            <ul class="list" style="margin-top:10px;">
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>dein Nervensystem zuverlässig <strong>regulierst</strong></span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Energie <strong>aufbaust und schützt</strong>, statt sie zu verbrauchen</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>deinen Fokus <strong>trainierst</strong>, statt ihn nur „zusammenzuhalten“</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>mit Druck mental <strong>sauber arbeitest</strong>, ohne dich zu verhärten</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>wieder Zugang zu deinem inneren Kompass bekommst: <strong>Was ist wesentlich? Was passt zu mir?</strong></span></li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <p class="muted" style="margin-top:0;">
+              Wir starten nicht bei „mehr Disziplin“. Wir starten beim <strong>Fundament</strong>.
+            </p>
+
+            <div class="btns" style="margin-top:14px;">
+              <a class="btn primary" href="#kontakt">Erstgespräch anfragen</a>
+              <a class="btn" href="#faq">Fragen klären</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜBER MICH -->
+    <section id="ueber-mich">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">05</span>
+              <span>Über mich</span>
+            </div>
+          </div>
+          <div class="sectionHint">Erfahrung · Werkzeuge · Transfer</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Über mich</h2>
+
+            <div class="proseMax">
+              <p>
+                Ich bin Nils – Mensch, Ehemann, Sohn, Bruder, Vater. Polizeibeamter, Führungskraft, Freund, Coach.
+                Viele Rollen, viele Erwartungen. Und oft das Gefühl, gleichzeitig funktionieren zu müssen: im Job, zu Hause, im Kopf.
+              </p>
+
+              <p style="margin-top:14px;">
+                Mein Weg ist geprägt von Lernen, Verantwortung und dem Wunsch, innere Stabilität nicht dem Zufall zu überlassen.
+                Nach dem Abitur 2008 mit den Leistungskursen Pädagogik und Psychologie folgte 2011 der Bachelor of Arts im Bereich Polizeivollzugsdienst.
+                2025 habe ich den Master of Arts im Polizeimanagement abgeschlossen – und mich parallel bewusst in eine Richtung weiterentwickelt,
+                die lange gefehlt hat: Zustandsmanagement.
+              </p>
+            </div>
+          </div>
+
+          <div class="block tight">
+            <div class="proseMax">
+              <p>
+                2025 habe ich die Ausbildung zum Mentaltrainer (Schwerpunkt Business und Führung) bei der Academy of Sports abgeschlossen sowie eine Breathwork-Ausbildung ergänzt.
+                Nicht als „Add-on“, sondern weil ich aus eigener Erfahrung weiß: Ein hektisches Leben braucht mehr als gute Planung.
+                Es braucht einen klaren Kopf, einen regulierten Körper und Methoden, die im Alltag wirklich tragen.
+              </p>
+
+              <p style="margin-top:14px;">
+                Ich habe mich intensiv mit Mentaltraining, Breathwork, Neurowissenschaft, Neuroathletik und Meditation beschäftigt – nicht theoretisch, sondern praktisch:
+                weil Druck, Tempo und Verantwortung echte Werkzeuge verlangen, keine Floskeln.
+              </p>
+
+              <p style="margin-top:14px;">
+                Heute gebe ich meine Erkenntnisse und Erfahrungen weiter. Klar, praxistauglich und ohne Umwege.
+                Damit Menschen in ihren Rollen leistungsfähig bleiben, ohne sich selbst zu verlieren – und wieder mehr Präsenz, Fokus und Energie
+                in das bringen, was ihnen wirklich wichtig ist.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HALTUNG -->
+    <section id="Philosophie">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">06</span>
+              <span>Meine Philosophie</span>
+            </div>
+          </div>
+          <div class="sectionHint">Werte · Richtung · Präsenz</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Meine Philosophie</h2>
+            <p class="muted">Ich arbeite mit einer einfachen Leitlinie:</p>
+            <p class="lead"><strong>"Life is what our thoughts make it" — Marcus Aurelius</strong></p>
+
+            <div class="proseMax">
+              <p>
+                Wenn du dich selbst nicht spürst – Körper, Atem, Gefühle – dann fehlt dir die notwendige Achtsamkeit.
+                Dann steuerst du zwar nach außen, verlierst aber nach innen den Kontakt. Und genau dort beginnt die Erschöpfung.
+              </p>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Vier Grundlagen, die wir im Coaching konsequent klären</h3>
+            <ul class="list" style="margin-top:10px;">
+              <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Werte:</strong> Wofür stehst du wirklich – und wofür nicht mehr?</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Wer bist du:</strong> Welche Rollen sind echt – welche sind nur Erwartung?</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Was willst du:</strong> Was ist wesentlich, statt nur dringend?</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Richtung:</strong> Welche Entscheidungen bringen dich zu einem Leben, das du wirklich willst?</span></li>
+            </ul>
+          </div>
+
+          <div class="block tight">
+            <h3>Für wen das ist</h3>
+            <div class="proseMax">
+              <p>
+                Für Menschen, die Verantwortung tragen – beruflich oder privat – und merken:
+                So wie es gerade läuft, ist es nicht nachhaltig.
+              </p>
+
+              <p style="margin-top:14px;">
+                Für Menschen, die nicht nur „Erfolg“ wollen, sondern <strong>ein echtes, freies Leben</strong>:
+                mit Klarheit, Präsenz und spielerischem Flow – statt Daueranspannung und innerem Druck.
+              </p>
+
+              <p class="muted" style="margin-top:12px;">Wenn du wieder:</p>
+              <ul class="list" style="margin-top:10px;">
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Ruhe im Kopf</strong> statt Dauerspannung willst</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>klaren Fokus</strong> statt innerem Nebel</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Energie</strong> statt ständiger Erholungslücken</span></li>
+                <li class="li"><span class="dot" aria-hidden="true"></span><span><strong>Präsenz</strong> statt nur Performance</span></li>
+              </ul>
+
+              <p class="muted" style="margin-top:12px;">
+                … dann ist Basiswirksam der richtige Ansatz.
+              </p>
+
+              <div class="btns" style="margin-top:14px;">
+                <a class="btn primary" href="#kontakt">Nächster Schritt</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZEIT FÜR VERÄNDERUNG -->
+    <section id="veraenderung">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">07</span>
+              <span>Veränderung</span>
+            </div>
+          </div>
+          <div class="sectionHint">Raus aus Druck · rein ins Stimmige</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Zeit für Veränderung?</h2>
+            <div class="proseMax">
+              <p class="lead"><strong>Schluss mit Mauern bauen. Raus aus Angst, Druck und Dauerstress.</strong></p>
+              <p>
+                Hin zu mehr Energie, Klarheit, Freiheit und Authentizität.
+              </p>
+              <p style="margin-top:14px;">
+                Das Ziel ist nicht „noch besser funktionieren“.
+                Das Ziel ist: <strong>ein Leben, das sich stimmig anfühlt – und das du bewusst führst.</strong>
+              </p>
+
+              <div class="btns" style="margin-top:16px;">
+                <a class="btn primary" href="#kontakt">Erstgespräch anfragen</a>
+                <a class="btn" href="#coaching">Was wir konkret machen</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="block tight">
+            <h3>Was sich in der Praxis verändert</h3>
+            <ul class="list" style="margin-top:10px;">
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Du bleibst unter Druck <strong>klarer</strong> – statt innerlich enger zu werden.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Du regulierst schneller – und kommst zurück in <strong>Handlungsfähigkeit</strong>.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Du führst dich besser – über <strong>Werte, Grenzen und Richtung</strong>.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Du gewinnst <strong>Energie</strong>, weil du weniger gegen dich arbeitest.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">08</span>
+              <span>FAQ</span>
+            </div>
+          </div>
+          <div class="sectionHint">Ablauf · Umfang · Passung</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Häufige Fragen</h2>
+            <div class="proseMax">
+              <p class="muted">
+                Kurz, klar, ohne Umwege. Wenn deine Frage nicht dabei ist: schreib mir im Kontaktformular.
+              </p>
+
+              <div class="divider"></div>
+
+              <h3>Wie läuft das Erstgespräch ab?</h3>
+              <p>
+                Wir sprechen kurz über deine aktuelle Situation, deine Ziele und das, was dich gerade blockiert.
+                Danach bekommst du eine klare Einschätzung, ob Basiswirksam zu dir passt – und wie ein sinnvoller nächster Schritt aussehen kann.
+              </p>
+
+              <div class="divider"></div>
+
+              <h3>Wie viele Sessions sind sinnvoll?</h3>
+              <p>
+                Das hängt von Ausgangslage und Ziel ab. Manche brauchen vor allem einen Reset und klare Hebel,
+                andere wollen langfristig ein stabiles System aufbauen. Entscheidend ist: Es muss alltagstauglich sein – und wirken.
+              </p>
+
+              <div class="divider"></div>
+
+              <h3>Ist das eher Mentaltraining oder eher Coaching?</h3>
+              <p>
+                Beides – mit einem klaren Fokus: Zustandsmanagement.
+                Wir kombinieren mentale Werkzeuge (Fokus, Gedankenhygiene, Druckarbeit) mit körpernaher Regulation (Atem, Nervensystem, Energie),
+                damit Veränderung nicht nur verstanden, sondern wirklich umgesetzt wird.
+              </p>
+
+              <div class="divider"></div>
+
+              <h3>Woran merke ich, dass es passt?</h3>
+              <p>
+                Wenn du nicht mehr „nur funktionieren“ willst, sondern Klarheit, Präsenz und Freiheit im Alltag suchst –
+                und bereit bist, dich systematisch zu führen, statt dich weiter durchzudrücken.
+              </p>
+            </div>
+          </div>
+
+          <div class="block tight">
+            <h3>Mini-Check</h3>
+            <p class="muted">Wenn du hier öfter „Ja“ denkst, lohnt sich ein Gespräch:</p>
+            <ul class="list">
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Ich bin leistungsfähig, aber innerlich oft angespannt.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Ich will Klarheit – nicht noch mehr Druck.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Ich merke, dass mein Nervensystem „zu lange an“ ist.</span></li>
+              <li class="li"><span class="dot" aria-hidden="true"></span><span>Ich will ein Leben, das sich stimmig anfühlt – nicht nur gut aussieht.</span></li>
+            </ul>
+
+            <div class="btns" style="margin-top:14px;">
+              <a class="btn primary" href="#kontakt">Erstgespräch anfragen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <div class="sectionMeta">
+              <span class="secIndex">09</span>
+              <span>Kontakt</span>
+            </div>
+          </div>
+          <div class="sectionHint">Termin · Nachricht · E-Mail</div>
+        </div>
+
+        <div class="sectionGrid">
+          <div class="block">
+            <h2>Nächster Schritt</h2>
+            <div class="proseMax">
+              <p>
+                Wenn du spürst, dass es Zeit ist für eine Neujustierung: Lass uns sprechen.
+                In einem kurzen Erstgespräch klären wir, wo du gerade stehst – und ob das Coaching zu dir passt.
+              </p>
+
+              <div class="divider"></div>
+
+              <h3>Terminbuchung</h3>
+              <p class="muted">Du kannst direkt einen Termin buchen. Du erhältst anschließend die Bestätigung und den Link zum Online-Gespräch.</p>
+              <div class="btns" style="margin-top:12px;">
+                <!-- TODO: Buchungslink eintragen -->
+                <a class="btn primary" href="#" target="_blank" rel="noopener">Erstgespräch online buchen</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="block tight">
+            <div class="formcard" aria-label="Kontaktformular" style="margin-top:0;">
+              <h3 style="margin-top:0;">Kontaktformular</h3>
+              <p class="muted" style="margin-top:6px;">Für kurze Fragen oder Kontext vorab. Ich melde mich zeitnah per E-Mail.</p>
+
+              <form id="contactForm" novalidate>
+                <div class="sr-only">
+                  <label for="website">Bitte leer lassen</label>
+                  <input id="website" name="website" class="input" autocomplete="off" />
+                </div>
+
+                <div class="formgrid">
+                  <div class="field">
+                    <label class="label" for="cf_name">Name</label>
+                    <input class="input" id="cf_name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required />
+                  </div>
+                  <div class="field">
+                    <label class="label" for="cf_email">E-Mail</label>
+                    <input class="input" id="cf_email" name="email" type="email" autocomplete="email" placeholder="name@beispiel.de" required />
+                  </div>
+                  <div class="field" style="grid-column: 1 / -1;">
+                    <label class="label" for="cf_msg">Nachricht</label>
+                    <textarea class="textarea" id="cf_msg" name="message" placeholder="Worum geht es? (optional: Wunschzeiten, Kontext, Ziel)" required></textarea>
+                  </div>
+                </div>
+
+                <div class="checkrow">
+                  <input id="cf_privacy" name="privacy" type="checkbox" required />
+                  <label class="muted" for="cf_privacy" style="max-width: var(--prose);">
+                    Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verarbeitet werden.
+                  </label>
+                </div>
+
+                <div class="btns" style="margin-top:12px;">
+                  <button class="btn primary" type="submit">Nachricht senden</button>
+                  <a class="btn" href="mailto:Basiswirksam@gmail.com?subject=Anfrage%20%C3%BCber%20Basiswirksam">Alternativ per E-Mail</a>
+                </div>
+                <p class="help" id="formStatus" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <div class="block tight">
+            <p class="muted" style="margin:0;">
+              Hinweis: Coaching ersetzt keine Psychotherapie. Bei starkem Leidensdruck oder klinischen Symptomen ist therapeutische Unterstützung ggf. sinnvoll.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <strong>Basiswirksam</strong><br>
+          <span class="muted">Online</span>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#" aria-label="Impressum">Impressum</a>
+          <a href="#" aria-label="Datenschutz">Datenschutz</a>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="muted">© <span id="y"></span> Basiswirksam</div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme/Layout via URL params
+    (function(){
+      const p = new URLSearchParams(window.location.search);
+      const theme = p.get('theme');
+      const layout = p.get('layout');
+      const root = document.documentElement;
+      if(theme) root.setAttribute('data-theme', theme);
+      if(layout) root.setAttribute('data-layout', layout);
+    })();
+
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile Drawer + Focus management
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('drawerBackdrop');
+      const closeBtn = document.getElementById('closeBtn');
+
+      if(!btn || !drawer || !backdrop || !closeBtn) return;
+
+      let lastFocus = null;
+
+      function getFocusable(){
+        return drawer.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])');
+      }
+
+      function openDrawer(){
+        lastFocus = document.activeElement;
+        drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden','false');
+        btn.setAttribute('aria-expanded','true');
+        backdrop.hidden = false;
+        document.body.style.overflow = 'hidden';
+
+        const focusables = getFocusable();
+        if(focusables.length) focusables[0].focus();
+        else drawer.focus();
+      }
+
+      function closeDrawer(){
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden','true');
+        btn.setAttribute('aria-expanded','false');
+        backdrop.hidden = true;
+        document.body.style.overflow = '';
+        if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      }
+
+      btn.addEventListener('click', () => {
+        drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+      });
+
+      closeBtn.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+
+      drawer.addEventListener('click', (e) => {
+        const t = e.target;
+        if(t && t.matches && t.matches('[data-close]')) closeDrawer();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape' && drawer.classList.contains('open')){
+          closeDrawer();
+          return;
+        }
+        if(e.key === 'Tab' && drawer.classList.contains('open')){
+          const focusables = Array.from(getFocusable());
+          if(!focusables.length) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+
+          if(e.shiftKey && document.activeElement === first){
+            e.preventDefault(); last.focus();
+          } else if(!e.shiftKey && document.activeElement === last){
+            e.preventDefault(); first.focus();
+          }
+        }
+      });
+    })();
+
+    // Contact form (mailto fallback)
+    (function(){
+      const form = document.getElementById('contactForm');
+      if(!form) return;
+
+      const status = document.getElementById('formStatus');
+      const hp = document.getElementById('website');
+
+      function setStatus(msg){ if(status) status.textContent = msg; }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        setStatus('');
+
+        if(hp && hp.value && hp.value.trim().length){
+          setStatus('Danke!');
+          return;
+        }
+
+        const name = (document.getElementById('cf_name')?.value || '').trim();
+        const email = (document.getElementById('cf_email')?.value || '').trim();
+        const msg = (document.getElementById('cf_msg')?.value || '').trim();
+        const privacy = document.getElementById('cf_privacy')?.checked;
+
+        if(!name || !email || !msg){
+          setStatus('Bitte fülle Name, E-Mail und Nachricht aus.');
+          return;
+        }
+        if(!privacy){
+          setStatus('Bitte bestätige den Hinweis zur Verarbeitung.');
+          return;
+        }
+
+        const subject = encodeURIComponent('Kontaktanfrage über Basiswirksam');
+        const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${msg}`);
+
+        window.location.href = `mailto:Basiswirksam@gmail.com?subject=${subject}&body=${body}`;
+        setStatus('E-Mail-Programm wird geöffnet … (falls nichts passiert, nutze „Alternativ per E-Mail“).');
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
+```
